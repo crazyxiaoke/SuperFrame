@@ -1,0 +1,99 @@
+package com.hz.zxk.superframe_kotlin.base
+
+import android.os.Bundle
+import androidx.annotation.IdRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.hz.zxk.superframe_kotlin.manager.ActivityManager
+import com.hz.zxk.superframe_kotlin.utils.StatusBarUtil
+
+/**
+@author zhengxiaoke
+@date 2019-11-20 10:03
+ */
+abstract class BaseActivity : AppCompatActivity() {
+    private var fm = supportFragmentManager
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //设置状态栏
+        setStatusBar()
+        //设置状态栏字体颜色
+        StatusBarUtil.setStatusTextLight(this, isLightStatusBar())
+        //添加Activity到堆栈
+        ActivityManager.instance.addActivity(this)
+        bindView(savedInstanceState)
+        init()
+        initData()
+    }
+
+    open fun setStatusBar() {
+        StatusBarUtil.transparent(this)
+    }
+
+    open fun isLightStatusBar(): Boolean {
+        return false
+    }
+
+    override fun onDestroy() {
+        //移除在堆栈中的Activity
+        ActivityManager.instance.removeActivity(this)
+        super.onDestroy()
+    }
+
+    /**
+     * 添加fragment
+     * @param resId
+     * @param fragment
+     */
+    fun addFragment(@IdRes resId: Int, fragment: Fragment) {
+        val ft = fm.beginTransaction()
+        ft.add(resId, fragment)
+        ft.commitAllowingStateLoss()
+    }
+
+    /**
+     * 替换fragment
+     * @param resId
+     * @param fragment
+     */
+    fun replaceFragment(@IdRes resId: Int, fragment: Fragment) {
+        val ft = fm.beginTransaction()
+        ft.replace(resId, fragment)
+        ft.commitAllowingStateLoss()
+    }
+
+    /**
+     * 移除fragment
+     * @param fragment
+     */
+    fun removeFragment(fragment: Fragment) {
+        val ft = fm.beginTransaction()
+        ft.remove(fragment)
+        ft.commitAllowingStateLoss()
+    }
+
+    /**
+     * 显示fragment
+     * @param fragment
+     */
+    fun showFragment(fragment: Fragment) {
+        val ft = fm.beginTransaction()
+        ft.show(fragment)
+        ft.commitAllowingStateLoss()
+    }
+
+    /**
+     * 隐藏fragment
+     */
+    fun hideFragment(fragment: Fragment) {
+        val ft = fm.beginTransaction()
+        ft.hide(fragment)
+        ft.commitAllowingStateLoss()
+    }
+
+
+    abstract fun bindView(savedInstanceState: Bundle?);
+    abstract fun init();
+    abstract fun initData();
+
+}
