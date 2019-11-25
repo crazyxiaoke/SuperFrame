@@ -11,6 +11,7 @@ import com.hz.zxk.superframe_kotlin.base.BaseViewModelActivity
 import com.hz.zxk.superframe_kotlin.extend.getStatusHeight
 import com.hz.zxk.superframe_kotlin.extend.isEmail
 import com.hz.zxk.superframe_kotlin.extend.isMobile
+import com.hz.zxk.superframe_kotlin.utils.SharedPreferenceUtil
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseViewModelActivity<MainViewModel>() {
@@ -23,15 +24,9 @@ class MainActivity : BaseViewModelActivity<MainViewModel>() {
     }
 
     override fun init() {
-        val phone1:String="13409883321"
-        val phone2:String="211039485888"
-        Log.d("TAG","phone1.isPhone=${phone1.isMobile()}")
-        Log.d("TAG","phone2.isPhone=${phone2.isMobile()}")
-        Log.d("TAG", "height=" + getStatusHeight())
-        val email1:String="123445@qq.com"
-        val email2:String="123424qq@.com"
-        Log.d("TAG","email1.isEmail=${email1.isEmail()}")
-        Log.d("TAG","email2.isEmail=${email2.isEmail()}")
+        SharedPreferenceUtil.instance.init(this)
+        SharedPreferenceUtil.instance.putValue("test","这是测试").commit()
+        Log.d("TAG","TEST="+SharedPreferenceUtil.instance.getString("test"))
         mBinding?.model = model
         initMainFragment()
         btn_main.setOnClickListener(View.OnClickListener {

@@ -25,6 +25,9 @@ fun Context.dp2px(value: Int): Int {
     return (value * scale + 0.5f).toInt()
 }
 
+/**
+ * sp转px
+ */
 fun Context.sp2px(value: Float): Float {
     return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, value, resources.displayMetrics)
 }
@@ -43,6 +46,9 @@ fun Context.screenHeight(): Int {
     return resources.displayMetrics.heightPixels
 }
 
+/**
+ * 获取状态栏高度
+ */
 fun Context.getStatusHeight(): Int {
     val clazz = Class.forName("com.android.internal.R\$dimen")
     val obj = clazz.newInstance()
