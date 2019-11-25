@@ -4,14 +4,21 @@ import android.os.Bundle
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import com.hz.zxk.superframe_kotlin.di.BaseViewModel
 import com.hz.zxk.superframe_kotlin.manager.ActivityManager
+import com.hz.zxk.superframe_kotlin.utils.LoadingDialog
 import com.hz.zxk.superframe_kotlin.utils.StatusBarUtil
+import com.hz.zxk.superframe_kotlin.utils.ToastUtil
+import java.lang.reflect.ParameterizedType
 
 /**
 @author zhengxiaoke
 @date 2019-11-20 10:03
  */
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity(), IBaseView {
     private var fm = supportFragmentManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,9 +29,10 @@ abstract class BaseActivity : AppCompatActivity() {
         //添加Activity到堆栈
         ActivityManager.instance.addActivity(this)
         bindView(savedInstanceState)
+        beforeInit()
         init()
-        initData()
     }
+
 
     open fun setStatusBar() {
         StatusBarUtil.transparent(this)
@@ -91,9 +99,32 @@ abstract class BaseActivity : AppCompatActivity() {
         ft.commitAllowingStateLoss()
     }
 
+    override fun showLoading() {
+        LoadingDialog.instance.show(this)
+    }
+
+    override fun showLoading(msg: String?) {
+        LoadingDialog.instance.show(this, msg)
+    }
+
+    override fun hideLoading() {
+        LoadingDialog.instance.dimiss()
+    }
+
+    override fun showError(code: Int, msg: String?) {
+        ToastUtil.instance.showToast(this, msg)
+    }
+
+
+    /**
+     *  init的前置函数
+     *  放入一些需要在init之前执行的操作
+     */
+    open fun beforeInit() {
+
+    }
 
     abstract fun bindView(savedInstanceState: Bundle?);
     abstract fun init();
-    abstract fun initData();
 
 }

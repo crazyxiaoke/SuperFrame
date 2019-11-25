@@ -1,0 +1,24 @@
+package com.hz.zxk.demo.viewmodel
+
+import android.view.View
+import com.hz.zxk.superframe_kotlin.base.BaseResultModel
+import com.hz.zxk.superframe_kotlin.di.BaseViewModel
+
+/**
+@author zhengxiaoke
+@date 2019-11-23 23:25
+ */
+class MainViewModel:BaseViewModel() {
+
+    fun getMainData(){
+
+    }
+
+    fun onLoading(){
+        liveData.value=BaseResultModel.loading()
+    }
+
+    fun showToast(){
+        liveData.value=BaseResultModel.toast("我是从ViewModel来的Toast")
+    }
+}
