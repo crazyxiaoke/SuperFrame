@@ -1,6 +1,5 @@
-package com.hz.zxk.demo.viewmodel
+package com.hz.zxk.demo.ui.main.viewmodel
 
-import android.view.View
 import com.hz.zxk.superframe_kotlin.base.BaseResultModel
 import com.hz.zxk.superframe_kotlin.di.BaseViewModel
 

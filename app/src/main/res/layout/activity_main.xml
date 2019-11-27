@@ -7,14 +7,14 @@
 
         <variable
             name="model"
-            type="com.hz.zxk.demo.viewmodel.MainViewModel" />
+            type="com.hz.zxk.demo.ui.main.viewmodel.MainViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".MainActivity">
+        tools:context=".ui.MainActivity">
 
         <!--        <Button-->
         <!--            android:layout_width="match_parent"-->

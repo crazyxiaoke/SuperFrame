@@ -30,82 +30,63 @@ class SharedPreferenceUtil private constructor() {
         editor = sharedPreferences?.edit()
     }
 
-    fun putValue(key: String, value: Int):SharedPreferenceUtil {
+    fun putValue(key: String, value: Int): SharedPreferenceUtil {
         editor?.putInt(key, value)
         return this
     }
 
-    fun putValue(key: String, value: String):SharedPreferenceUtil {
+    fun putValue(key: String, value: String): SharedPreferenceUtil {
         editor?.putString(key, value)
         return this
     }
 
-    fun putValue(key: String, value: Boolean):SharedPreferenceUtil {
+    fun putValue(key: String, value: Boolean): SharedPreferenceUtil {
         editor?.putBoolean(key, value)
         return this
     }
 
-    fun putValue(key: String, value: Float):SharedPreferenceUtil {
+    fun putValue(key: String, value: Float): SharedPreferenceUtil {
         editor?.putFloat(key, value)
         return this
     }
 
-    fun putValue(key: String, value: Long) :SharedPreferenceUtil{
+    fun putValue(key: String, value: Long): SharedPreferenceUtil {
         editor?.putLong(key, value)
         return this
     }
 
-    fun putValue(key: String, value: Set<String>):SharedPreferenceUtil {
+    fun putValue(key: String, value: Set<String>): SharedPreferenceUtil {
         editor?.putStringSet(key, value)
         return this
     }
 
-    fun getString(key: String, defValue: String): String? {
+    fun getString(key: String, defValue: String = ""): String? {
         return sharedPreferences?.getString(key, defValue)
     }
 
-    fun getString(key: String): String? {
-        return getString(key, "")
-    }
 
-    fun getInt(key: String, defValue: Int): Int? {
+    fun getInt(key: String, defValue: Int = -1): Int? {
         return sharedPreferences?.getInt(key, defValue)
     }
 
-    fun getInt(key: String): Int? {
-        return getInt(key, -1)
-    }
 
-    fun getBoolean(key: String, defValue: Boolean): Boolean? {
+    fun getBoolean(key: String, defValue: Boolean = false): Boolean? {
         return sharedPreferences?.getBoolean(key, defValue)
     }
 
-    fun getBoolean(key: String): Boolean? {
-        return sharedPreferences?.getBoolean(key, false)
-    }
 
-    fun getLong(key: String, defValue: Long): Long? {
+    fun getLong(key: String, defValue: Long = -1): Long? {
         return sharedPreferences?.getLong(key, defValue)
     }
 
-    fun getLong(key: String): Long? {
-        return sharedPreferences?.getLong(key, -1)
-    }
 
-    fun getFloat(key: String, defValue: Float): Float? {
+    fun getFloat(key: String, defValue: Float = 0f): Float? {
         return sharedPreferences?.getFloat(key, defValue)
     }
 
-    fun getFloat(key: String): Float? {
-        return getFloat(key, 0f)
-    }
 
-    fun getSet(key: String, defValue: Set<String>?): Set<String>? {
+    fun getSet(key: String, defValue: Set<String>? = null): Set<String>? {
         return sharedPreferences?.getStringSet(key, defValue)
-    }
-
-    fun getSet(key: String): Set<String>? {
-        return getSet(key, null)
     }
 
     /**

@@ -1,22 +1,23 @@
-package com.hz.zxk.demo
+package com.hz.zxk.demo.ui
 
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.hz.zxk.demo.R
 import com.hz.zxk.demo.databinding.ActivityMainBinding
-import com.hz.zxk.demo.viewmodel.MainViewModel
-import com.hz.zxk.superframe_kotlin.base.BaseActivity
+import com.hz.zxk.demo.ui.main.viewmodel.MainViewModel
 import com.hz.zxk.superframe_kotlin.base.BaseViewModelActivity
-import com.hz.zxk.superframe_kotlin.extend.getStatusHeight
-import com.hz.zxk.superframe_kotlin.extend.isEmail
-import com.hz.zxk.superframe_kotlin.extend.isMobile
 import com.hz.zxk.superframe_kotlin.utils.SharedPreferenceUtil
+import com.hz.zxk.superframe_kotlin.utils.StartActivityUtil
+import com.hz.zxk.superframe_kotlin.utils.StartActivityUtil.Companion.pushActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import com.hz.zxk.demo.ui.MainActivity as MainActivity
 
+@Route(path = "main/main")
 class MainActivity : BaseViewModelActivity<MainViewModel>() {
     private var mBinding: ActivityMainBinding? = null
-    var index = 0
     private var mainFragment: MainFragment? = null
     private var shopFragment: ShopFragment? = null
     override fun bindView(savedInstanceState: Bundle?) {
