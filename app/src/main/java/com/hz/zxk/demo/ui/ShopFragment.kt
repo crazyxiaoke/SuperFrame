@@ -1,10 +1,11 @@
-package com.hz.zxk.demo
+package com.hz.zxk.demo.ui
 
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.hz.zxk.demo.R
 import com.hz.zxk.superframe_kotlin.base.BaseLazyFragment
 import kotlinx.android.synthetic.main.fragment_shop.*
 
