@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3e34"
     android:orientation="vertical">
 
     <TextView
@@ -14,23 +15,23 @@
 
     <Button
         android:id="@+id/btn"
-        android:layout_below="@id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="显示"/>
+        android:layout_below="@id/text"
+        android:text="显示" />
 
     <Button
         android:id="@+id/skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="跳转"
         android:layout_below="@id/text"
-        android:layout_toRightOf="@id/btn"/>
+        android:layout_toRightOf="@id/btn"
+        android:text="跳转" />
 
     <ViewStub
         android:id="@+id/viewStub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn"
-        android:layout="@layout/layout_show"/>
+        android:layout="@layout/layout_show" />
 </RelativeLayout>

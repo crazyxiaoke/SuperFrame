@@ -1,14 +1,14 @@
-package com.hz.zxk.demo.ui
+package com.hz.zxk.demo.ui.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.alibaba.android.arouter.launcher.ARouter
 import com.hz.zxk.demo.R
 import com.hz.zxk.demo.ui.shop.ShopListActivity
 import com.hz.zxk.superframe_kotlin.base.BaseLazyFragment
 import com.hz.zxk.superframe_kotlin.router.RouterUtil
+import com.hz.zxk.superframe_kotlin.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.fragment_main.*
 
 /**
@@ -30,6 +30,7 @@ class MainFragment : BaseLazyFragment() {
 
 
     override fun init(savedInstanceState: Bundle?) {
+        StatusBarUtil.transparent(activity!!)
         btn.setOnClickListener {
             if (viewStub != null) {
                 viewStub.inflate()

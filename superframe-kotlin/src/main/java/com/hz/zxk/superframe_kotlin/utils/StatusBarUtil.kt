@@ -21,7 +21,7 @@ object StatusBarUtil {
      */
     fun transparent(activity: Activity) {
         transparentStatusBar(activity)
-        setRootView(activity)
+
     }
 
     /**
@@ -35,12 +35,15 @@ object StatusBarUtil {
      * 设置状态栏字体亮色
      */
     fun setStatusTextLight(activity: Activity, light: Boolean) {
-        Log.d("TAG", "亮色文字1")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (light) {
-                activity.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                Log.d("TAG", "${activity::class.java.simpleName}---亮色")
+                activity.window.decorView.systemUiVisibility =
+                    activity.window.decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
             } else {
-                activity.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                Log.d("TAG", "${activity::class.java.simpleName}---暗色")
+                activity.window.decorView.systemUiVisibility =
+                    activity.window.decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
             }
         }
     }
@@ -56,8 +59,7 @@ object StatusBarUtil {
             activity.window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
 //            activity.window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
             activity.window.decorView.systemUiVisibility =
-                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN and View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-
+                activity.window.decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
             activity.window.statusBarColor = Color.TRANSPARENT
         } else {
             //android5.0以下
@@ -65,9 +67,9 @@ object StatusBarUtil {
         }
     }
 
-    private fun setRootView(activity: Activity) {
+    fun setRootView(activity: Activity) {
         val root: ViewGroup = activity.findViewById(android.R.id.content)
-        for (i in 0..root.childCount) {
+        for (i in 0 until root.childCount) {
             val childView = root.getChildAt(i)
             if (childView is ViewGroup) {
                 childView.fitsSystemWindows = true
