@@ -1,4 +1,4 @@
-package com.hz.zxk.demo.ui
+package com.hz.zxk.demo.ui.main
 
 import android.os.Bundle
 import android.util.Log

@@ -26,9 +26,11 @@ abstract class BaseActivity : AppCompatActivity(), IBaseView {
         setStatusBar()
         //设置状态栏字体颜色
         StatusBarUtil.setStatusTextLight(this, isLightStatusBar())
+        bindView(savedInstanceState)
+        StatusBarUtil.setRootView(this)
         //添加Activity到堆栈
         ActivityManager.instance.addActivity(this)
-        bindView(savedInstanceState)
+
         beforeInit()
         init()
     }

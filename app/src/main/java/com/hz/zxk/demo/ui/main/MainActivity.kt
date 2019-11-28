@@ -1,4 +1,4 @@
-package com.hz.zxk.demo.ui
+package com.hz.zxk.demo.ui.main
 
 import android.os.Bundle
 import android.util.Log
@@ -10,10 +10,7 @@ import com.hz.zxk.demo.databinding.ActivityMainBinding
 import com.hz.zxk.demo.ui.main.viewmodel.MainViewModel
 import com.hz.zxk.superframe_kotlin.base.BaseViewModelActivity
 import com.hz.zxk.superframe_kotlin.utils.SharedPreferenceUtil
-import com.hz.zxk.superframe_kotlin.utils.StartActivityUtil
-import com.hz.zxk.superframe_kotlin.utils.StartActivityUtil.Companion.pushActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import com.hz.zxk.demo.ui.MainActivity as MainActivity
 
 @Route(path = "main/main")
 class MainActivity : BaseViewModelActivity<MainViewModel>() {
@@ -26,8 +23,8 @@ class MainActivity : BaseViewModelActivity<MainViewModel>() {
 
     override fun init() {
         SharedPreferenceUtil.instance.init(this)
-        SharedPreferenceUtil.instance.putValue("test","这是测试").commit()
-        Log.d("TAG","TEST="+SharedPreferenceUtil.instance.getString("test"))
+        SharedPreferenceUtil.instance.putValue("test", "这是测试").commit()
+        Log.d("TAG", "TEST=" + SharedPreferenceUtil.instance.getString("test"))
         mBinding?.model = model
         initMainFragment()
         btn_main.setOnClickListener(View.OnClickListener {
