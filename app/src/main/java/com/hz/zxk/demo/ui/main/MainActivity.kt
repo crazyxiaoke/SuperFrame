@@ -10,6 +10,8 @@ import com.hz.zxk.demo.databinding.ActivityMainBinding
 import com.hz.zxk.demo.ui.main.viewmodel.MainViewModel
 import com.hz.zxk.superframe_kotlin.base.BaseViewModelActivity
 import com.hz.zxk.superframe_kotlin.utils.SharedPreferenceUtil
+import com.hz.zxk.superhttp_kotlin.SuperHttp
+import com.hz.zxk.superhttp_kotlin.listener.SuperHttpListener
 import kotlinx.android.synthetic.main.activity_main.*
 
 @Route(path = "main/main")
@@ -36,6 +38,28 @@ class MainActivity : BaseViewModelActivity<MainViewModel>() {
             hideAllFragment()
             initShopFragment()
         })
+
+        SuperHttp.instance
+            .url("api/v1/template/main")
+            .method(SuperHttp.Method.GET)
+            .addParam("hoho", "haha")
+            .request("", object : SuperHttpListener<String> {
+                override fun onStart() {
+                    Log.d("TAG", "onStart");
+                    val clazz = javaClass
+                    val type = clazz.genericInterfaces
+                    Log.d("TAG", "mainActivity=${type}")
+                }
+
+                override fun onSuccess(data: String) {
+                    Log.d("TAG", "onSuccess");
+                }
+
+                override fun onError(e: Throwable) {
+                    e.printStackTrace()
+                    Log.d("TAG", "onError");
+                }
+            })
     }
 
     private fun initMainFragment() {

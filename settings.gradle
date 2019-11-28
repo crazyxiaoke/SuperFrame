@@ -1,2 +1,2 @@
-include ':app', ':superframe-kotlin'
+include ':app', ':superframe-kotlin', ':superhttp-kotlin', ':superutil-kotlin'
 rootProject.name='SuperFrame-kotlin'

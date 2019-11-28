@@ -16,15 +16,12 @@ class NativeRouter : IRouter {
     }
 
     override fun pushActivity(context: Context?, url: String, bundle: Bundle) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun pushActivityForInt(context: Context?, url: String, key: String, value: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun pushActivityForString(context: Context?, url: String, key: String, value: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun pushActivityForBoolean(
@@ -33,15 +30,12 @@ class NativeRouter : IRouter {
         key: String,
         value: Boolean
     ) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun pushActivityForFloat(context: Context?, url: String, key: String, value: Float) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun pushActivityForDouble(context: Context?, url: String, key: String, value: Double) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun pushActivityForSerializable(
@@ -50,7 +44,6 @@ class NativeRouter : IRouter {
         key: String,
         value: Serializable
     ) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun pushActivityForParcelable(
@@ -59,6 +52,5 @@ class NativeRouter : IRouter {
         key: String,
         value: Parcelable
     ) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
