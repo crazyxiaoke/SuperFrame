@@ -10,7 +10,7 @@ interface ApiService {
     fun get(
         @Path(value = "url", encoded = true) url: String,
         @QueryMap params: @JvmSuppressWildcards Map<String, Any>?
-    ): @JvmSuppressWildcards Observable<ResponseBody>
+    ): Observable<String>
 
     @POST("{url}")
     @FormUrlEncoded

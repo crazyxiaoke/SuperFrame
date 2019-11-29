@@ -1,8 +1,7 @@
 package com.hz.zxk.superhttp_kotlin.request
 
 import android.content.Context
-import android.os.Debug
-import com.hz.zxk.superhttp_kotlin.listener.SuperHttpListener
+import com.hz.zxk.superhttp_kotlin.listener.SuperCallback
 
 interface ISuperRequest {
     fun init(context: Context, baseUrl: String)
@@ -12,7 +11,7 @@ interface ISuperRequest {
         url: String,
         param: Map<String, Any>?,
         tag: String?,
-        listener: SuperHttpListener<T>?
+        listener: SuperCallback<T>?
     )
 
     fun post(url: String, param: Map<String, Any>?)

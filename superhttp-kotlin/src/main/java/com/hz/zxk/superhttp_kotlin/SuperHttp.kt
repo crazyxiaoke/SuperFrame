@@ -1,8 +1,7 @@
 package com.hz.zxk.superhttp_kotlin
 
 import android.content.Context
-import android.nfc.Tag
-import com.hz.zxk.superhttp_kotlin.listener.SuperHttpListener
+import com.hz.zxk.superhttp_kotlin.listener.SuperCallback
 import com.hz.zxk.superhttp_kotlin.request.ISuperRequest
 import com.hz.zxk.superhttp_kotlin.request.RetrofitRequest
 import java.lang.IllegalArgumentException
@@ -64,7 +63,7 @@ class SuperHttp private constructor() {
     }
 
 
-    fun <T> request(tag: String?, listener: SuperHttpListener<T>?) {
+    fun <T> request(tag: String?, listener: SuperCallback<T>?) {
         if (url == null) {
             throw NullPointerException("url is null")
         }

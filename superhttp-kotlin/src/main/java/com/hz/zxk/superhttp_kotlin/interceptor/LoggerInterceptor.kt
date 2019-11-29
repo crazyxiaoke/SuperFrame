@@ -1,9 +1,9 @@
 package com.hz.zxk.superhttp_kotlin.interceptor
 
 import android.util.Log
-import com.orhanobut.logger.Logger
 import okhttp3.Interceptor
 import okhttp3.Response
+import okhttp3.ResponseBody
 
 class LoggerInterceptor(var isDebug: Boolean) : Interceptor {
 
@@ -15,11 +15,14 @@ class LoggerInterceptor(var isDebug: Boolean) : Interceptor {
         val duration = endTime - startTime
         Log.d("TAG", "拦截器")
 //        if (isDebug) {
-            Log.d("TAG", "Request Start")
-            Log.d("TAG", "返回码${response.code()}")
-//            Log.d("TAG", response.body()?.string())
-            Log.d("TAG", "Request End:${duration}")
+        Log.d("TAG", "Request Start")
+        Log.d("TAG", "返回码${response.code()}")
+        var responseBody = response.body()
+        val body = responseBody?.string()
+        Log.d("TAG", "{body}")
+        responseBody = ResponseBody.create(responseBody?.contentType(), body);
+        Log.d("TAG", "Request End:${duration}")
 //        }
-        return response
+        return response.newBuilder().body(responseBody).build()
     }
 }

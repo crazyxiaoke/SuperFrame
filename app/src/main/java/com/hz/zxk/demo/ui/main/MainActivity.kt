@@ -7,11 +7,12 @@ import androidx.databinding.DataBindingUtil
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.hz.zxk.demo.R
 import com.hz.zxk.demo.databinding.ActivityMainBinding
+import com.hz.zxk.demo.ui.main.model.Result
 import com.hz.zxk.demo.ui.main.viewmodel.MainViewModel
 import com.hz.zxk.superframe_kotlin.base.BaseViewModelActivity
 import com.hz.zxk.superframe_kotlin.utils.SharedPreferenceUtil
 import com.hz.zxk.superhttp_kotlin.SuperHttp
-import com.hz.zxk.superhttp_kotlin.listener.SuperHttpListener
+import com.hz.zxk.superhttp_kotlin.listener.SuperCallback
 import kotlinx.android.synthetic.main.activity_main.*
 
 @Route(path = "main/main")
@@ -43,16 +44,14 @@ class MainActivity : BaseViewModelActivity<MainViewModel>() {
             .url("api/v1/template/main")
             .method(SuperHttp.Method.GET)
             .addParam("hoho", "haha")
-            .request("", object : SuperHttpListener<String> {
+            .request("", object : SuperCallback<Result>() {
                 override fun onStart() {
                     Log.d("TAG", "onStart");
-                    val clazz = javaClass
-                    val type = clazz.genericInterfaces
-                    Log.d("TAG", "mainActivity=${type}")
                 }
 
-                override fun onSuccess(data: String) {
+                override fun onSuccess(data: Result?) {
                     Log.d("TAG", "onSuccess");
+                    Log.d("TAG", "result=${data}")
                 }
 
                 override fun onError(e: Throwable) {

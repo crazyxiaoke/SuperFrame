@@ -1,24 +1,26 @@
 package com.hz.zxk.superhttp_kotlin.base
 
-import android.content.Context
 import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.hz.zxk.superhttp_kotlin.listener.SuperHttpListener
+import com.hz.zxk.superhttp_kotlin.exeption.SuperException
 import com.hz.zxk.superhttp_kotlin.manager.ObserverManager
-import com.hz.zxk.superutil_kotlin.utils.NetWorkUtil
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.plugins.RxJavaPlugins
-import okhttp3.ResponseBody
-import java.lang.reflect.ParameterizedType
+import retrofit2.HttpException
+import java.lang.reflect.Type
 
-abstract class BaseDisposableObserver(
+
+abstract class BaseDisposableObserver<T>(
+    var type: Type?,
     var tag: String? = null
-) : DisposableObserver<ResponseBody>() {
+) : DisposableObserver<String>() {
+    private val TAG = "SuperHttp"
 
     init {
         RxJavaPlugins.setErrorHandler {
-            Log.e("TAG", it.message ?: "RxJavaError")
+            it.printStackTrace()
+            Log.d(TAG, "${it.message}")
         }
     }
 
@@ -32,9 +34,12 @@ abstract class BaseDisposableObserver(
         ObserverManager.instance.remove(tag)
     }
 
-    override fun onNext(responseBody: ResponseBody) {
-        Log.d("TAG", "onNext")
-        onSuccess(responseBody)
+    override fun onNext(result: String) {
+        if (type == null) {
+            onSuccess(null)
+        } else {
+            onSuccess(Gson().fromJson(result, type))
+        }
     }
 
     override fun onError(e: Throwable) {
@@ -45,7 +50,7 @@ abstract class BaseDisposableObserver(
 
     abstract fun onLoading()
 
-    abstract fun onSuccess(responseBody: ResponseBody)
+    abstract fun onSuccess(t: T?)
 
     abstract fun onFail(e: Throwable)
 
