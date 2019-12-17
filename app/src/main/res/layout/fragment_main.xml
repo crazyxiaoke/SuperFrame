@@ -34,4 +34,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/btn"
         android:layout="@layout/layout_show" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_below="@id/viewStub" />
 </RelativeLayout>
