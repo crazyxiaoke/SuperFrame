@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.hz.zxk.demo.R
 import com.hz.zxk.demo.ui.shop.ShopListActivity
 import com.hz.zxk.superframe_kotlin.base.BaseLazyFragment
+import com.hz.zxk.superframe_kotlin.imageloader.ImageLoader
 import com.hz.zxk.superframe_kotlin.router.RouterUtil
 import com.hz.zxk.superframe_kotlin.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -31,6 +32,13 @@ class MainFragment : BaseLazyFragment() {
 
     override fun init(savedInstanceState: Bundle?) {
         StatusBarUtil.transparent(activity!!)
+        ImageLoader.instance.loadImage(
+            "http://static.fus158.com/2019-12-14/1576310955.png", image
+        ) {
+            radius = 360
+            errorHolder=R.drawable.ic_launcher_background
+            placeHolder = R.drawable.ic_launcher_foreground
+        }
         btn.setOnClickListener {
             if (viewStub != null) {
                 viewStub.inflate()
