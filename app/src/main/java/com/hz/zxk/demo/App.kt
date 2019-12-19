@@ -11,7 +11,7 @@ import com.hz.zxk.superhttp_kotlin.interceptor.LoggerInterceptor
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
-//        RouterUtil.instance.init(NativeRouter())
+        RouterUtil.instance.init(NativeRouter())
         if (BuildConfig.DEBUG) {
             ARouter.openLog()
             ARouter.openDebug()
