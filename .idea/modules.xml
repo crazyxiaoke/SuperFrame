@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/superframe-kotlin/superframe-kotlin.iml" filepath="$PROJECT_DIR$/superframe-kotlin/superframe-kotlin.iml" />
       <module fileurl="file://$PROJECT_DIR$/superhttp-kotlin/superhttp-kotlin.iml" filepath="$PROJECT_DIR$/superhttp-kotlin/superhttp-kotlin.iml" />
       <module fileurl="file://$PROJECT_DIR$/superutil-kotlin/superutil-kotlin.iml" filepath="$PROJECT_DIR$/superutil-kotlin/superutil-kotlin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/superview-kotlin/superview-kotlin.iml" filepath="$PROJECT_DIR$/superview-kotlin/superview-kotlin.iml" />
     </modules>
   </component>
 </project>
