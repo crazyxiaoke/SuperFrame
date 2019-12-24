@@ -18,7 +18,7 @@ class ShopListActivity : BaseActivity() {
 
     override fun bindView(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_shop_list)
-        ARouter.getInstance().inject(this)
+//        ARouter.getInstance().inject(this)
     }
 
 }

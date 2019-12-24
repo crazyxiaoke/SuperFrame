@@ -40,4 +40,10 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_below="@id/viewStub" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image"
+        android:text="第二次热更新修复测试1231231" />
 </RelativeLayout>

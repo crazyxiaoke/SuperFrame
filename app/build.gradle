@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'com.aliyun.ams.emas-services'
+
 android {
     compileSdkVersion 29
     defaultConfig {
@@ -47,4 +49,5 @@ dependencies {
     implementation project(":superframe-kotlin")
     implementation project(":superhttp-kotlin")
     kapt 'com.alibaba:arouter-compiler:1.2.2'
+    implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.9'
 }
