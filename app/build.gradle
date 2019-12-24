@@ -27,6 +27,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 kapt {
@@ -48,6 +53,7 @@ dependencies {
 
     implementation project(":superframe-kotlin")
     implementation project(":superhttp-kotlin")
+    implementation project(":superview-kotlin")
     kapt 'com.alibaba:arouter-compiler:1.2.2'
     implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.9'
 }
