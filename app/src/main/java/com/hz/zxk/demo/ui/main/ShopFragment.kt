@@ -35,6 +35,7 @@ class ShopFragment : BaseLazyFragment() {
     override fun init(savedInstanceState: Bundle?) {
         adapter = MyAdapter(context!!)
         refreshLayout.setAdapter(adapter)
+
 //        for (i: Int in 1..10)
 //            names.add("测试")
         adapter?.refreshData(names)

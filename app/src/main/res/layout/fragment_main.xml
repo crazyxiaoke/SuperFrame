@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#3e34"
@@ -13,12 +14,21 @@
         android:textColor="#333333"
         android:textSize="18sp" />
 
-    <Button
+    <com.hz.zxk.superview_kotlin.button.SuperButton
         android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
         android:layout_below="@id/text"
-        android:text="显示" />
+        android:text="显示"
+        android:textColor="#ffffff"
+        app:sb_enabledBackground="#666666"
+        app:sb_enabledTextColor="#ff0000"
+        app:sb_normalBackground="#dd3423"
+        app:sb_normalTextColor="#00ff00"
+        app:sb_pressedBackground="#333333"
+        app:sb_pressedTextColor="#0000ff"
+        app:sb_pressedBackgroundStyle="stork"
+        app:sb_radius="20dp" />
 
     <Button
         android:id="@+id/skip"

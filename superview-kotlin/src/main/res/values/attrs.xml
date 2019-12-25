@@ -2,5 +2,46 @@
 <resources>
     <declare-styleable name="RefreshRecyclerView">
         <attr name="rf_empty_view" format="reference" />
+        <attr name="rf_recyclerview_background" format="reference|color" />
+    </declare-styleable>
+    <declare-styleable name="SuperButton">
+        <attr name="sb_radius" format="dimension" />
+        <attr name="sb_topLeftRadius" format="dimension" />
+        <attr name="sb_topRightRadius" format="dimension" />
+        <attr name="sb_bottomLeftRadius" format="dimension" />
+        <attr name="sb_bottomRightRadius" format="dimension" />
+        <attr name="sb_normalBackground" format="color|reference" />
+        <attr name="sb_pressedBackground" format="color|reference" />
+        <attr name="sb_enabledBackground" format="color|reference" />
+        <attr name="sb_selectedBackground" format="color|reference" />
+        <attr name="sb_normalTextColor" format="color|reference" />
+        <attr name="sb_pressedTextColor" format="color|reference" />
+        <attr name="sb_enabledTextColor" format="color|reference" />
+        <attr name="sb_selectedTextColor" format="color|reference" />
+        <attr name="sb_backgroundStyle">
+            <enum name="fill" value="1" />
+            <enum name="stork" value="2" />
+        </attr>
+        <attr name="sb_normalBackgroundStyle">
+            <enum name="fill" value="1" />
+            <enum name="stork" value="2" />
+        </attr>
+        <attr name="sb_pressedBackgroundStyle">
+            <enum name="fill" value="1" />
+            <enum name="stork" value="2" />
+        </attr>
+        <attr name="sb_enabledBackgroundStyle">
+            <enum name="fill" value="1" />
+            <enum name="stork" value="2" />
+        </attr>
+        <attr name="sb_selectedBackgroundStyle">
+            <enum name="fill" value="1" />
+            <enum name="stork" value="2" />
+        </attr>
+        <attr name="sb_storkWidth" format="dimension" />
+        <attr name="sb_normalStorkWidth" format="dimension" />
+        <attr name="sb_pressedStorkWidth" format="dimension" />
+        <attr name="sb_enabledStorkWidth" format="dimension" />
+        <attr name="sb_selectStorkWidth" format="dimension" />
     </declare-styleable>
 </resources>

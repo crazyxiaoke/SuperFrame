@@ -38,7 +38,7 @@ class MainFragment : BaseLazyFragment() {
         val valueAnimator = ValueAnimator.ofInt(2012, 2019);
         valueAnimator.addUpdateListener {
             val v = it.animatedValue
-            Log.d("TAG", "v=${v}");
+
             text.text = v.toString()
         }
         valueAnimator.duration = 1000
@@ -52,10 +52,12 @@ class MainFragment : BaseLazyFragment() {
             errorHolder = R.drawable.ic_launcher_background
             placeHolder = R.drawable.ic_launcher_foreground
         }
+        btn.isEnabled = false
         btn.setOnClickListener {
-            if (viewStub != null) {
-                viewStub.inflate()
-            }
+            //            if (viewStub != null) {
+//                viewStub.inflate()
+//            }
+            Log.d("TAG", "btnOnclick")
         }
 
         skip.setOnClickListener {

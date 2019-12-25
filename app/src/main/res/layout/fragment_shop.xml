@@ -9,6 +9,7 @@
         android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:rf_empty_view="@layout/view_empty" />
+        app:rf_empty_view="@layout/view_empty"
+        app:rf_recyclerview_background="@drawable/ic_launcher_background" />
 
 </RelativeLayout>
