@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="radius" format="dimension" />
+    <attr name="topLeftRadius" format="dimension" />
+    <attr name="topRightRadius" format="dimension" />
+    <attr name="bottomRightRadius" format="dimension" />
+    <attr name="bottomLeftRadius" format="dimension" />
+
     <declare-styleable name="RefreshRecyclerView">
         <attr name="rf_empty_view" format="reference" />
         <attr name="rf_recyclerview_background" format="reference|color" />
     </declare-styleable>
+
+    <!--自定义的Button-->
     <declare-styleable name="SuperButton">
         <attr name="sb_radius" format="dimension" />
         <attr name="sb_topLeftRadius" format="dimension" />
@@ -44,4 +52,64 @@
         <attr name="sb_enabledStorkWidth" format="dimension" />
         <attr name="sb_selectStorkWidth" format="dimension" />
     </declare-styleable>
+
+    <!--自定义的TextView-->
+    <declare-styleable name="SuperTextView">
+        <attr name="st_radius" format="dimension" />
+        <attr name="st_topLeftRadius" format="dimension" />
+        <attr name="st_topRightRadius" format="dimension" />
+        <attr name="st_bottomLeftRadius" format="dimension" />
+        <attr name="st_bottomRightRadius" format="dimension" />
+        <attr name="st_normalBackground" format="color|reference" />
+        <attr name="st_pressedBackground" format="color|reference" />
+        <attr name="st_enabledBackground" format="color|reference" />
+        <attr name="st_selectedBackground" format="color|reference" />
+        <attr name="st_normalTextColor" format="color|reference" />
+        <attr name="st_pressedTextColor" format="color|reference" />
+        <attr name="st_enabledTextColor" format="color|reference" />
+        <attr name="st_selectedTextColor" format="color|reference" />
+        <attr name="st_backgroundStyle">
+            <enum name="fill" value="1" />
+            <enum name="stork" value="2" />
+        </attr>
+        <attr name="st_normalBackgroundStyle">
+            <enum name="fill" value="1" />
+            <enum name="stork" value="2" />
+        </attr>
+        <attr name="st_pressedBackgroundStyle">
+            <enum name="fill" value="1" />
+            <enum name="stork" value="2" />
+        </attr>
+        <attr name="st_enabledBackgroundStyle">
+            <enum name="fill" value="1" />
+            <enum name="stork" value="2" />
+        </attr>
+        <attr name="st_selectedBackgroundStyle">
+            <enum name="fill" value="1" />
+            <enum name="stork" value="2" />
+        </attr>
+        <attr name="st_storkWidth" format="dimension" />
+        <attr name="st_normalStorkWidth" format="dimension" />
+        <attr name="st_pressedStorkWidth" format="dimension" />
+        <attr name="st_enabledStorkWidth" format="dimension" />
+        <attr name="st_selectStorkWidth" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="RCAttrs">
+        <attr name="radius" />
+        <attr name="topLeftRadius" />
+        <attr name="topRightRadius" />
+        <attr name="bottomRightRadius" />
+        <attr name="bottomLeftRadius" />
+    </declare-styleable>
+
+    <!-- 可实现圆角的LinearLayout-->
+    <declare-styleable name="RoundLinearLayout">
+        <attr name="radius" />
+        <attr name="topLeftRadius" />
+        <attr name="topRightRadius" />
+        <attr name="bottomRightRadius" />
+        <attr name="bottomLeftRadius" />
+    </declare-styleable>
+
 </resources>

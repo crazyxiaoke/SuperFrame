@@ -34,7 +34,6 @@ class MainFragment : BaseLazyFragment() {
 
     override fun init(savedInstanceState: Bundle?) {
         StatusBarUtil.transparent(activity!!)
-        Log.d("TAG", "启动动画")
         val valueAnimator = ValueAnimator.ofInt(2012, 2019);
         valueAnimator.addUpdateListener {
             val v = it.animatedValue
@@ -43,7 +42,6 @@ class MainFragment : BaseLazyFragment() {
         }
         valueAnimator.duration = 1000
         valueAnimator.start()
-        Log.d("TAG", "启动动画结束")
         ImageLoader.instance.loadImage(
             "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1576582507348&di=df368bdd9be497bd22b21f489f8dc982&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F43efd35d1e9cadc6d8ff5cdc5faccec06f1082bb4efc4-o8K27E_fw658",
             image
