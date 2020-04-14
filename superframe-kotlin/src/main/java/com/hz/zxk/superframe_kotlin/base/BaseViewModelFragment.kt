@@ -14,8 +14,8 @@ import java.lang.reflect.ParameterizedType
  */
 abstract class BaseViewModelFragment<VM : BaseViewModel> : BaseFragment() {
     protected lateinit var model: VM
-    override fun beforeInit(savedInstanceState: Bundle?) {
-        super.beforeInit(savedInstanceState)
+    override fun onBeforeInit(savedInstanceState: Bundle?) {
+        super.onBeforeInit(savedInstanceState)
         initModel()
         model.liveData.observe(this, Observer {
             when (it.statue) {

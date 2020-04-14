@@ -21,6 +21,7 @@ import java.lang.reflect.ParameterizedType
 abstract class BaseActivity : AppCompatActivity(), IBaseView {
     private var fm = supportFragmentManager
     override fun onCreate(savedInstanceState: Bundle?) {
+        onBeforeCreate()
         super.onCreate(savedInstanceState)
         //设置状态栏
         setStatusBar()
@@ -31,7 +32,7 @@ abstract class BaseActivity : AppCompatActivity(), IBaseView {
         //添加Activity到堆栈
         ActivityManager.instance.addActivity(this)
 
-        beforeInit()
+        onBeforeInit()
         init()
     }
 
@@ -122,9 +123,11 @@ abstract class BaseActivity : AppCompatActivity(), IBaseView {
      *  init的前置函数
      *  放入一些需要在init之前执行的操作
      */
-    open fun beforeInit() {
+    open fun onBeforeInit() {
 
     }
+
+    open fun onBeforeCreate() {}
 
     abstract fun bindView(savedInstanceState: Bundle?);
     abstract fun init();

@@ -19,15 +19,14 @@ abstract class BaseViewModelActivity<VM : BaseViewModel> : BaseActivity() {
     private fun initModel() {
         val clazz = javaClass
         val type = clazz.genericSuperclass
-        Log.d("TAG", "activity.type=${type}")
         if (type != null && type is ParameterizedType) {
             val viewmodelClass = type.actualTypeArguments[0] as Class<VM>
             model = ViewModelProviders.of(this).get(viewmodelClass)
         }
     }
 
-    override fun beforeInit() {
-        super.beforeInit()
+    override fun onBeforeInit() {
+        super.onBeforeInit()
         initModel()
         model.liveData.observe(this, Observer {
             when (it.statue) {

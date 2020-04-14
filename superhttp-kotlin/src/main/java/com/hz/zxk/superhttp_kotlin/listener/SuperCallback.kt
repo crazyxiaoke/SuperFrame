@@ -11,7 +11,7 @@ abstract class SuperCallback<T> {
         mType = getSuperclassTypeParameter(javaClass)
     }
 
-    fun getSuperclassTypeParameter(subClass: Class<*>): Type {
+    private fun getSuperclassTypeParameter(subClass: Class<*>): Type {
         val superclass: Type? = subClass.genericSuperclass
         if (superclass != null && superclass is ParameterizedType) {
             return superclass.actualTypeArguments[0]

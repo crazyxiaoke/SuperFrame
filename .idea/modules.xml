@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SuperFrame-kotlin.iml" filepath="$PROJECT_DIR$/SuperFrame-kotlin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/superhttp-kotlin/SuperFrame-superhttp-kotlin.iml" filepath="$PROJECT_DIR$/superhttp-kotlin/SuperFrame-superhttp-kotlin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/superutil-kotlin/SuperFrame-superutil-kotlin.iml" filepath="$PROJECT_DIR$/superutil-kotlin/SuperFrame-superutil-kotlin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/superframe-kotlin/superframe-kotlin.iml" filepath="$PROJECT_DIR$/superframe-kotlin/superframe-kotlin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SuperFrame-kotlin.iml" filepath="$PROJECT_DIR$/SuperFrame-kotlin.iml" group="SuperFrame-kotlin" />
+      <module fileurl="file://$PROJECT_DIR$/superhttp-kotlin/SuperFrame-superhttp-kotlin.iml" filepath="$PROJECT_DIR$/superhttp-kotlin/SuperFrame-superhttp-kotlin.iml" group="SuperFrame-kotlin/superhttp-kotlin" />
+      <module fileurl="file://$PROJECT_DIR$/superutil-kotlin/SuperFrame-superutil-kotlin.iml" filepath="$PROJECT_DIR$/superutil-kotlin/SuperFrame-superutil-kotlin.iml" group="SuperFrame-kotlin/superutil-kotlin" />
+      <module fileurl="file://$PROJECT_DIR$/superview-kotlin/SuperFrame-superview-kotlin.iml" filepath="$PROJECT_DIR$/superview-kotlin/SuperFrame-superview-kotlin.iml" group="SuperFrame-kotlin/superview-kotlin" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="SuperFrame-kotlin/app" />
+      <module fileurl="file://$PROJECT_DIR$/superframe-kotlin/superframe-kotlin.iml" filepath="$PROJECT_DIR$/superframe-kotlin/superframe-kotlin.iml" group="SuperFrame-kotlin/superframe-kotlin" />
       <module fileurl="file://$PROJECT_DIR$/superhttp-kotlin/superhttp-kotlin.iml" filepath="$PROJECT_DIR$/superhttp-kotlin/superhttp-kotlin.iml" />
       <module fileurl="file://$PROJECT_DIR$/superutil-kotlin/superutil-kotlin.iml" filepath="$PROJECT_DIR$/superutil-kotlin/superutil-kotlin.iml" />
       <module fileurl="file://$PROJECT_DIR$/superview-kotlin/superview-kotlin.iml" filepath="$PROJECT_DIR$/superview-kotlin/superview-kotlin.iml" />

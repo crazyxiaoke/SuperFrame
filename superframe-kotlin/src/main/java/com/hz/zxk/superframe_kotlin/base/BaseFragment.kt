@@ -23,8 +23,9 @@ abstract class BaseFragment : Fragment(), IBaseView {
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+        onBeforeCreate(savedInstanceState)
         super.onActivityCreated(savedInstanceState)
-        beforeInit(savedInstanceState)
+        onBeforeInit(savedInstanceState)
         init(savedInstanceState)
     }
 
@@ -49,9 +50,11 @@ abstract class BaseFragment : Fragment(), IBaseView {
      *  init的前置函数
      *  放入一些需要在init之前执行的操作
      */
-    open fun beforeInit(savedInstanceState: Bundle?) {
+    open fun onBeforeInit(savedInstanceState: Bundle?) {
 
     }
+
+    open fun onBeforeCreate(savedInstanceState: Bundle?) {}
 
     abstract fun bindView(
         inflater: LayoutInflater,

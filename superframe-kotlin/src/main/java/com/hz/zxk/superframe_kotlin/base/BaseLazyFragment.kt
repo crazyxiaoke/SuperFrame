@@ -12,8 +12,8 @@ abstract class BaseLazyFragment : BaseFragment() {
     private var hasLoad = false
     private var isVisibleToUser = false
 
-    override fun beforeInit(savedInstanceState: Bundle?) {
-        super.beforeInit(savedInstanceState)
+    override fun onBeforeInit(savedInstanceState: Bundle?) {
+        super.onBeforeInit(savedInstanceState)
         isCreate = true
     }
 

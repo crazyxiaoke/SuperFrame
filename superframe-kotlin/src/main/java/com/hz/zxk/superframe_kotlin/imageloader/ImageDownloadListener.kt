@@ -1,9 +1,9 @@
 package com.hz.zxk.superframe_kotlin.imageloader
 
-import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 
 interface ImageDownloadListener {
-    fun success(bitmap: Bitmap)
+    fun success(drawable: Drawable)
 
-    fun error(code: Int, msg: String)
+    fun error(e:Throwable)
 }
