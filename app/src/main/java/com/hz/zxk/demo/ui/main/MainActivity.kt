@@ -40,25 +40,25 @@ class MainActivity : BaseViewModelActivity<MainViewModel>() {
             initShopFragment()
         })
 
-        SuperHttp.instance
-            .url("api/v1/template/main")
-            .method(SuperHttp.Method.GET)
-            .addParam("hoho", "haha")
-            .request("", object : SuperCallback<Result>() {
-                override fun onStart() {
-                    Log.d("TAG", "onStart");
-                }
-
-                override fun onSuccess(data: Result?) {
-                    Log.d("TAG", "onSuccess");
-                    Log.d("TAG", "result=${data}")
-                }
-
-                override fun onError(e: Throwable) {
-                    e.printStackTrace()
-                    Log.d("TAG", "onError");
-                }
-            })
+//        SuperHttp.instance
+//            .url("api/v1/template/main")
+//            .method(SuperHttp.Method.GET)
+//            .addParam("hoho", "haha")
+//            .request("", object : SuperCallback<Result>() {
+//                override fun onStart() {
+//                    Log.d("TAG", "onStart");
+//                }
+//
+//                override fun onSuccess(data: Result?) {
+//                    Log.d("TAG", "onSuccess");
+//                    Log.d("TAG", "result=${data}")
+//                }
+//
+//                override fun onError(e: Throwable) {
+//                    e.printStackTrace()
+//                    Log.d("TAG", "onError");
+//                }
+//            })
     }
 
     private fun initMainFragment() {

@@ -1,24 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#3e34"
     android:orientation="vertical">
 
-    <TextView
+    <com.hz.zxk.superview_kotlin.textView.SuperTextView
         android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:gravity="center"
         android:text="我是首页"
-        android:textColor="#333333"
-        android:textSize="18sp" />
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:st_backgroundStyle="fill"
+        app:st_normalBackground="#ff0000"
+        app:st_topLeftRadius="20dp"
+        app:st_topRightRadius="20dp" />
 
-    <Button
+    <com.hz.zxk.superview_kotlin.button.SuperButton
         android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
         android:layout_below="@id/text"
-        android:text="显示" />
+        android:text="显示"
+        android:textColor="#ffffff"
+        android:visibility="gone"
+        app:sb_enabledBackground="#666666"
+        app:sb_enabledTextColor="#ff0000"
+        app:sb_normalBackground="#dd3423"
+        app:sb_normalTextColor="#00ff00"
+        app:sb_pressedBackground="#333333"
+        app:sb_pressedBackgroundStyle="stork"
+        app:sb_pressedTextColor="#0000ff"
+        app:sb_radius="20dp" />
 
     <Button
         android:id="@+id/skip"
@@ -26,24 +43,38 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/text"
         android:layout_toRightOf="@id/btn"
-        android:text="跳转" />
+        android:text="跳转"
+        android:visibility="gone" />
 
     <ViewStub
         android:id="@+id/viewStub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn"
-        android:layout="@layout/layout_show" />
+        android:layout="@layout/layout_show"
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/image"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_below="@id/viewStub" />
+        android:layout_below="@id/viewStub"
+        android:visibility="gone" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/image"
-        android:text="第二次热更新修复测试1231231" />
+        android:text="第二次热更新修复测试1231231"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:background="#f0f0f0">
+
+    </RelativeLayout>
+
+
 </RelativeLayout>

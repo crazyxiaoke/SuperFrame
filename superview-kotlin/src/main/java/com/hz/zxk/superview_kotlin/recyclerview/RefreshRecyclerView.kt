@@ -1,6 +1,7 @@
 package com.hz.zxk.superview_kotlin.recyclerview
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.os.Handler
 import android.util.AttributeSet
 import android.util.Log
@@ -14,22 +15,35 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
 
+/**
+ *@Author zhengxiaoke
+ *@Date 2019/12/24 20:04
+ *@Description 实现下拉刷新/上拉加载，数据为空时显示缺省页
+ */
 class RefreshRecyclerView(context: Context?, attrs: AttributeSet?) :
     SmartRefreshLayout(context, attrs) {
     private val FINISH_REFRESH = 0x01
     private val FINISH_LOADMORE = 0X02
 
     private var mEmptyViewResId = 0
+    private var mRecyclerViewBackground: Drawable? = null
 
     private lateinit var mParentLayout: RelativeLayout
-    private lateinit var mRecyclerView: RecyclerViewEmptySupport
-    private var mEmptyView: View? = null
+    lateinit var mRecyclerView: RecyclerViewEmptySupport
+        private set
+    var mEmptyView: View? = null
+        set(value) = value?.let { mRecyclerView.setEmptyView(it) }!!
 
     private var isRefresh = true;
     private var mListener: OnLoadDataListener? = null
 
+    constructor(context: Context?) : this(context, null)
 
-    val mRefreshHandler = Handler { msg ->
+    init {
+        init(attrs)
+    }
+
+    private val mRefreshHandler = Handler { msg ->
         when (msg.what) {
             FINISH_REFRESH -> finishRefresh()
             FINISH_LOADMORE -> finishLoadMore()
@@ -40,7 +54,6 @@ class RefreshRecyclerView(context: Context?, attrs: AttributeSet?) :
     private val finishRefreshLoadMoreObserver: RecyclerView.AdapterDataObserver =
         object : RecyclerView.AdapterDataObserver() {
             override fun onChanged() {
-                Log.d("TAG", "isRefresh=${isRefresh}")
                 when (isRefresh) {
                     true -> finishRefresh()
                     false -> finishLoadMore()
@@ -56,18 +69,13 @@ class RefreshRecyclerView(context: Context?, attrs: AttributeSet?) :
             }
         }
 
-    constructor(context: Context?) : this(context, null)
-
-
-    init {
-        init(attrs)
-    }
-
     private fun init(attrs: AttributeSet?) {
         if (attrs != null) {
             val ta = context.obtainStyledAttributes(attrs, R.styleable.RefreshRecyclerView)
             try {
                 mEmptyViewResId = ta.getResourceId(R.styleable.RefreshRecyclerView_rf_empty_view, 0)
+                mRecyclerViewBackground =
+                    ta.getDrawable(R.styleable.RefreshRecyclerView_rf_recyclerview_background)
             } finally {
                 ta.recycle()
             }
@@ -104,6 +112,7 @@ class RefreshRecyclerView(context: Context?, attrs: AttributeSet?) :
 
     private fun initRecyclerView() {
         mRecyclerView = RecyclerViewEmptySupport(context)
+        mRecyclerView.background = mRecyclerViewBackground
         val layoutParams = RelativeLayout.LayoutParams(
             RelativeLayout.LayoutParams.MATCH_PARENT,
             RelativeLayout.LayoutParams.MATCH_PARENT
@@ -125,8 +134,18 @@ class RefreshRecyclerView(context: Context?, attrs: AttributeSet?) :
 
     }
 
-    fun setEmptyView(emptyView: View) {
-        mRecyclerView.setEmptyView(emptyView)
+    /**
+     * 设置RecyclerView的背景
+     */
+    fun setRecyclerViewBackground(drawable: Drawable) {
+        mRecyclerView.background = drawable
+    }
+
+    /**
+     * 设置RecyclerView的背景
+     */
+    fun setRecyclerViewBackgroundColor(color: Int) {
+        mRecyclerView.setBackgroundColor(color)
     }
 
     fun setAdapter(adapter: RecyclerView.Adapter<*>?) {
@@ -135,6 +154,7 @@ class RefreshRecyclerView(context: Context?, attrs: AttributeSet?) :
             mRecyclerView.adapter = adapter
         }
     }
+
 
     fun setLayoutManager(layoutManager: RecyclerView.LayoutManager) {
         mRecyclerView.layoutManager = layoutManager
