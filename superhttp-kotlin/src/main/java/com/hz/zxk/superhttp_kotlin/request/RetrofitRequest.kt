@@ -87,31 +87,79 @@ class RetrofitRequest private constructor() : ISuperRequest {
         retrofit?.create(ApiService::class.java)?.get(url, param)
             ?.subscribeOn(Schedulers.io())
             ?.observeOn(AndroidSchedulers.mainThread())
-            ?.subscribe(object : BaseDisposableObserver<T>(type, tag) {
-                override fun onLoading() {
-                    listener?.onStart()
-                }
-
-                override fun onSuccess(t: T?) {
-                    listener?.onSuccess(t)
-                }
-
-                override fun onFail( e: Throwable) {
-                    listener?.onError(e)
-                }
-            })
+            ?.subscribe(getObserver(tag, type, listener))
     }
 
-    override fun post(url: String, param: Map<String, Any>?) {
+    override fun <T> post(
+        url: String,
+        param: Map<String, Any>?,
+        tag: String?,
+        listener: SuperCallback<T>?
+    ) {
+        var type: Type? = null
+        type = listener?.mType
+        retrofit?.create(ApiService::class.java)
+            ?.post(url, param)
+            ?.subscribeOn(Schedulers.io())
+            ?.observeOn(AndroidSchedulers.mainThread())
+            ?.subscribe(getObserver(tag, type, listener))
+
     }
 
-    override fun <T> post(url: String, param: T?) {
+    override fun <T, D> post(url: String, param: T?, tag: String?, listener: SuperCallback<D>?) {
+        val type: Type? = listener?.mType
+        retrofit?.create(ApiService::class.java)
+            ?.post(url, param)
+            ?.subscribeOn(Schedulers.io())
+            ?.observeOn(AndroidSchedulers.mainThread())
+            ?.subscribe(getObserver(tag, type, listener))
     }
 
-    override fun delete(url: String, param: Map<String, Any>?) {
+    override fun <T> delete(
+        url: String,
+        param: Map<String, Any>?,
+        tag: String?,
+        listener: SuperCallback<T>?
+    ) {
+        val type: Type? = listener?.mType
+        retrofit?.create(ApiService::class.java)
+            ?.delete(url, param)
+            ?.subscribeOn(Schedulers.io())
+            ?.observeOn(AndroidSchedulers.mainThread())
+            ?.subscribe(getObserver(tag, type, listener))
     }
 
-    override fun put(url: String, param: Map<String, Any>?) {
+    override fun <T, D> put(
+        url: String,
+        param: T?,
+        tag: String?,
+        listener: SuperCallback<D>?
+    ) {
+        val type: Type? = listener?.mType
+        retrofit?.create(ApiService::class.java)
+            ?.put(url, param)
+            ?.subscribeOn(Schedulers.io())
+            ?.observeOn(AndroidSchedulers.mainThread())
+            ?.subscribe(getObserver(tag, type, listener))
     }
 
+    private fun <T> getObserver(
+        tag: String?,
+        type: Type?,
+        listener: SuperCallback<T>?
+    ): BaseDisposableObserver<T> {
+        return object : BaseDisposableObserver<T>(type, tag) {
+            override fun onLoading() {
+                listener?.onStart()
+            }
+
+            override fun onSuccess(t: T?) {
+                listener?.onSuccess(t)
+            }
+
+            override fun onFail(e: Throwable) {
+                listener?.onError(e)
+            }
+        }
+    }
 }

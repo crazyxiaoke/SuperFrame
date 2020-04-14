@@ -4,7 +4,6 @@ import android.content.Context
 import com.hz.zxk.superhttp_kotlin.listener.SuperCallback
 import com.hz.zxk.superhttp_kotlin.request.ISuperRequest
 import com.hz.zxk.superhttp_kotlin.request.RetrofitRequest
-import java.lang.IllegalArgumentException
 import java.lang.NullPointerException
 
 class SuperHttp private constructor() {
@@ -71,13 +70,14 @@ class SuperHttp private constructor() {
             Method.GET -> request!!.get(url!!, params, tag, listener)
             Method.POST ->
                 when (body != null) {
-                    true -> request!!.post(url!!, body)
-                    false -> request!!.post(url!!, params)
+                    true -> request!!.post(url!!, body, tag, listener)
+                    false -> request!!.post(url!!, params, tag, listener)
                 }
-            Method.PUT -> request!!.put(url!!, params)
-            Method.DELETE -> request!!.delete(url!!, params)
-            else ->
-                throw IllegalArgumentException("不支持的${method}请求方式")
+            Method.PUT ->
+                when (body != null) {
+                    true -> request!!.put(url!!, params, tag, listener)
+                }
+            Method.DELETE -> request!!.delete(url!!, params, tag, listener)
         }
     }
 

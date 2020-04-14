@@ -54,7 +54,7 @@ ext{
     GITHUB_REPO_PATH="/Users/zhengxiaoke/gitProject/Frame"
     PUBLISH_GROUP_ID="com.crazyxiaoke"
     PUBLISH_ARTIFACT_ID="superhttp"
-    PUBLISH_VERSION="1.0.0"
+    PUBLISH_VERSION="1.0.1"
 }
 uploadArchives{
     repositories.mavenDeployer{

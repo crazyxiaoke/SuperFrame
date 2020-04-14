@@ -17,18 +17,24 @@ interface ApiService {
     fun post(
         @Path(value = "url", encoded = true) url: String,
         @FieldMap params: Map<String, Any>?
-    ): Observable<ResponseBody>
+    ): Observable<String>
 
     @POST("{url}")
     fun <T> post(
         @Path(value = "url", encoded = true) url: String,
         @Body params: T?
-    ): Observable<ResponseBody>
+    ): Observable<String>
 
     @DELETE("{url}")
     fun delete(
         @Path(value = "url", encoded = true) url: String,
         @QueryMap params: Map<String, Any>?
-    ): Observable<ResponseBody>
+    ): Observable<String>
+
+    @PUT("{url}")
+    fun <T> put(
+        @Path(value = "url", encoded = true) url: String,
+        @Body params: T?
+    ): Observable<String>
 
 }

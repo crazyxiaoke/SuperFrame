@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.hz.zxk.superframe_kotlin.di.BaseViewModel
 import com.hz.zxk.superframe_kotlin.utils.ToastUtil
 import java.lang.reflect.ParameterizedType
 

@@ -14,8 +14,31 @@ interface ISuperRequest {
         listener: SuperCallback<T>?
     )
 
-    fun post(url: String, param: Map<String, Any>?)
-    fun <T> post(url: String, param: T?)
-    fun delete(url: String, param: Map<String, Any>?)
-    fun put(url: String, param: Map<String, Any>?)
+    fun <T> post(
+        url: String,
+        param: Map<String, Any>?,
+        tag: String?,
+        listener: SuperCallback<T>?
+    )
+
+    fun <T, D> post(
+        url: String,
+        param: T?,
+        tag: String?,
+        listener: SuperCallback<D>?
+    )
+
+    fun <T> delete(
+        url: String,
+        param: Map<String, Any>?,
+        tag: String?,
+        listener: SuperCallback<T>?
+    )
+
+    fun <T,D> put(
+        url: String,
+        param: T?,
+        tag: String?,
+        listener: SuperCallback<D>?
+    )
 }

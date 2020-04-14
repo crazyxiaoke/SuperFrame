@@ -4,15 +4,10 @@ import android.os.Bundle
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import com.hz.zxk.superframe_kotlin.di.BaseViewModel
 import com.hz.zxk.superframe_kotlin.manager.ActivityManager
 import com.hz.zxk.superframe_kotlin.utils.LoadingDialog
 import com.hz.zxk.superframe_kotlin.utils.StatusBarUtil
 import com.hz.zxk.superframe_kotlin.utils.ToastUtil
-import java.lang.reflect.ParameterizedType
 
 /**
 @author zhengxiaoke
