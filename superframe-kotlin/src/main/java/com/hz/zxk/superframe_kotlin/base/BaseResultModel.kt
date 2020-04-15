@@ -18,6 +18,10 @@ open class BaseResultModel(
             return BaseResultModel(Statue.LOADING_HAS_MSG, msg = msg)
         }
 
+        fun hiedeLoading(): BaseResultModel {
+            return BaseResultModel(Statue.HIDE_LOADING, msg = "")
+        }
+
         fun toast(msg: String?): BaseResultModel {
             return BaseResultModel(Statue.TOAST, msg = msg)
         }
@@ -29,5 +33,5 @@ open class BaseResultModel(
 }
 
 enum class Statue {
-    LOADING, LOADING_HAS_MSG, TOAST, ERROR
+    LOADING, LOADING_HAS_MSG, HIDE_LOADING, TOAST, ERROR
 }

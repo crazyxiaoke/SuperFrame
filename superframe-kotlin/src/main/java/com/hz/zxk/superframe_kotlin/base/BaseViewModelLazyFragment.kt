@@ -9,14 +9,14 @@ import java.lang.reflect.ParameterizedType
 /**
 @author zhengxiaoke
 @date 2019-11-24 11:50
- 需要使用ViewModel的懒加载fragment
+需要使用ViewModel的懒加载fragment
  */
 abstract class BaseViewModelLazyFragment<VM : BaseViewModel> : BaseLazyFragment() {
     protected lateinit var model: VM
     override fun onBeforeInit(savedInstanceState: Bundle?) {
         super.onBeforeInit(savedInstanceState)
         initModel()
-        model.liveData.observe(this, Observer {
+        model.stateLiveData.observe(this, Observer {
             when (it.statue) {
                 Statue.LOADING -> {
                     showLoading()

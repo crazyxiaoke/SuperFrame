@@ -13,16 +13,16 @@ class LoggerInterceptor(var isDebug: Boolean) : Interceptor {
         val response = chain.proceed(request)
         val endTime = System.currentTimeMillis()
         val duration = endTime - startTime
-        Log.d("TAG", "拦截器")
-//        if (isDebug) {
-        Log.d("TAG", "Request Start")
-        Log.d("TAG", "返回码${response.code()}")
         var responseBody = response.body()
         val body = responseBody?.string()
-        Log.d("TAG", "{body}")
-        responseBody = ResponseBody.create(responseBody?.contentType(), body);
-        Log.d("TAG", "Request End:${duration}")
-//        }
+        responseBody = ResponseBody.create(responseBody?.contentType(), body)
+        if(isDebug){
+            Log.d("TAG", "Request Start")
+            Log.d("TAG", "返回码${response.code()}")
+            Log.d("TAG", "$body")
+            Log.d("TAG", "Request End:${duration}ms")
+        }
+
         return response.newBuilder().body(responseBody).build()
     }
 }

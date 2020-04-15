@@ -52,7 +52,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation project(":superframe-kotlin")
-    implementation project(":superhttp-kotlin")
+    api project(":superhttp-kotlin")
     implementation project(":superview-kotlin")
     kapt 'com.alibaba:arouter-compiler:1.2.2'
     implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.9'

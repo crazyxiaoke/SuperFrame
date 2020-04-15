@@ -27,13 +27,16 @@ abstract class BaseViewModelActivity<VM : BaseViewModel> : BaseActivity() {
     override fun onBeforeInit() {
         super.onBeforeInit()
         initModel()
-        model.liveData.observe(this, Observer {
+        model.stateLiveData.observe(this, Observer {
             when (it.statue) {
                 Statue.LOADING -> {
                     showLoading()
                 }
                 Statue.LOADING_HAS_MSG -> {
                     showLoading(it.msg)
+                }
+                Statue.HIDE_LOADING -> {
+                    hideLoading()
                 }
                 Statue.TOAST -> {
                     ToastUtil.instance.showToast(this, it.msg)

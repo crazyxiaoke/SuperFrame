@@ -1,6 +1,7 @@
 package com.hz.zxk.superhttp_kotlin
 
 import android.content.Context
+import com.hz.zxk.superhttp_kotlin.config.HttpConfig
 import com.hz.zxk.superhttp_kotlin.listener.SuperCallback
 import com.hz.zxk.superhttp_kotlin.request.ISuperRequest
 import com.hz.zxk.superhttp_kotlin.request.RetrofitRequest
@@ -24,12 +25,18 @@ class SuperHttp private constructor() {
     }
 
     fun init(context: Context, baseUrl: String, request: ISuperRequest? = null) {
+        init(context, request) {
+            this.baseUrl = baseUrl
+        }
+    }
+
+    fun init(context: Context, request: ISuperRequest? = null, config: HttpConfig.() -> Unit) {
         if (request == null) {
             this.request = RetrofitRequest.instance
         } else {
             this.request = request
         }
-        this.request?.init(context, baseUrl)
+        this.request?.init(context, config)
     }
 
     fun openDebug(isDebug: Boolean = true) {

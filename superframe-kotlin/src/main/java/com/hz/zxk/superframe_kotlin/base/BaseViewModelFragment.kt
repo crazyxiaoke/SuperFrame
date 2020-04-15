@@ -16,13 +16,16 @@ abstract class BaseViewModelFragment<VM : BaseViewModel> : BaseFragment() {
     override fun onBeforeInit(savedInstanceState: Bundle?) {
         super.onBeforeInit(savedInstanceState)
         initModel()
-        model.liveData.observe(this, Observer {
+        model.stateLiveData.observe(this, Observer {
             when (it.statue) {
                 Statue.LOADING -> {
                     showLoading()
                 }
                 Statue.LOADING_HAS_MSG -> {
                     showLoading(it.msg)
+                }
+                Statue.HIDE_LOADING -> {
+                    hideLoading()
                 }
                 Statue.TOAST -> {
                     activity?.let { activity ->

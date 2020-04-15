@@ -2,12 +2,9 @@ package com.hz.zxk.superhttp_kotlin.base
 
 import android.util.Log
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import com.hz.zxk.superhttp_kotlin.exeption.SuperException
 import com.hz.zxk.superhttp_kotlin.manager.ObserverManager
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.plugins.RxJavaPlugins
-import retrofit2.HttpException
 import java.lang.reflect.Type
 
 

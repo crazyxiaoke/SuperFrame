@@ -14,10 +14,10 @@ class MainViewModel: BaseViewModel() {
     }
 
     fun onLoading(){
-        liveData.value=BaseResultModel.loading()
+        stateLiveData.value=BaseResultModel.loading()
     }
 
     fun showToast(){
-        liveData.value=BaseResultModel.toast("我是从ViewModel来的Toast")
+        stateLiveData.value=BaseResultModel.toast("我是从ViewModel来的Toast")
     }
 }

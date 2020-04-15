@@ -3,6 +3,9 @@ package com.hz.zxk.demo
 import android.app.Application
 import android.content.Context
 import com.alibaba.android.arouter.launcher.ARouter
+import com.hz.zxk.demo.interceptor.InterceptorOne
+import com.hz.zxk.demo.interceptor.InterceptorThree
+import com.hz.zxk.demo.interceptor.InterceptorTwo
 import com.hz.zxk.superframe_kotlin.imageloader.ImageLoader
 import com.hz.zxk.superframe_kotlin.router.NativeRouter
 import com.hz.zxk.superframe_kotlin.router.RouterUtil
@@ -12,6 +15,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.api.*
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
+import okhttp3.Interceptor
 
 class App : Application() {
     companion object {
@@ -35,7 +39,15 @@ class App : Application() {
             ARouter.openDebug()
         }
 //        ARouter.init(this)
-        SuperHttp.instance.init(this, "http://192.168.0.160:8080/")
+        val interceptors = ArrayList<Interceptor>()
+        interceptors.add(InterceptorOne())
+        interceptors.add(InterceptorTwo())
+        interceptors.add(InterceptorThree())
+        SuperHttp.instance.init(this) {
+            this.baseUrl = "http://47.99.131.67:9092/"
+            this.interceptor = com.hz.zxk.demo.interceptor.LoggerInterceptor()
+            this.interceptors = interceptors
+        }
         SuperHttp.instance.openDebug()
         ImageLoader.init(this)
     }

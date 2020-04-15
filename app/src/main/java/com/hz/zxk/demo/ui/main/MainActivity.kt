@@ -39,7 +39,19 @@ class MainActivity : BaseViewModelActivity<MainViewModel>() {
             hideAllFragment()
             initShopFragment()
         })
+        SuperHttp.instance.method(SuperHttp.Method.POST)
+            .url("app_user/2/training/find_page_info")
+            .request("traningMainInfo", object : SuperCallback<Result>() {
+                override fun onStart() {
+                }
 
+                override fun onSuccess(data: Result?) {
+                    Log.d("TAG", "data=${data}")
+                }
+
+                override fun onError(e: Throwable) {
+                }
+            })
 //        SuperHttp.instance
 //            .url("api/v1/template/main")
 //            .method(SuperHttp.Method.GET)

@@ -22,7 +22,7 @@ class SuperButton @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) :
-    Button(context, attrs, defStyleAttr) {
+    androidx.appcompat.widget.AppCompatButton(context, attrs, defStyleAttr) {
     private val normalState: IntArray = intArrayOf(android.R.attr.state_enabled)
     private val pressedState: IntArray =
         intArrayOf(android.R.attr.state_pressed, android.R.attr.state_enabled)

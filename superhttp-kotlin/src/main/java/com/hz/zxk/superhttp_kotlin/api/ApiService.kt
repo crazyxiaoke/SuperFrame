@@ -16,25 +16,25 @@ interface ApiService {
     @FormUrlEncoded
     fun post(
         @Path(value = "url", encoded = true) url: String,
-        @FieldMap params: Map<String, Any>?
+        @FieldMap params: @JvmSuppressWildcards Map<String, Any>?
     ): Observable<String>
 
     @POST("{url}")
-    fun <T> post(
+    fun  <T> post(
         @Path(value = "url", encoded = true) url: String,
-        @Body params: T?
+        @Body params: @JvmSuppressWildcards T?
     ): Observable<String>
 
     @DELETE("{url}")
     fun delete(
         @Path(value = "url", encoded = true) url: String,
-        @QueryMap params: Map<String, Any>?
+        @QueryMap params: @JvmSuppressWildcards Map<String, Any>?
     ): Observable<String>
 
     @PUT("{url}")
     fun <T> put(
         @Path(value = "url", encoded = true) url: String,
-        @Body params: T?
+        @Body params: @JvmSuppressWildcards T?
     ): Observable<String>
 
 }

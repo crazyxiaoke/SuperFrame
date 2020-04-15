@@ -3,12 +3,13 @@ package com.hz.zxk.superhttp_kotlin.request
 import android.content.Context
 import com.hz.zxk.superhttp_kotlin.api.ApiService
 import com.hz.zxk.superhttp_kotlin.base.BaseDisposableObserver
+import com.hz.zxk.superhttp_kotlin.config.HttpConfig
 import com.hz.zxk.superhttp_kotlin.converter.MyGsonFactory
-import com.hz.zxk.superhttp_kotlin.interceptor.LoggerInterceptor
 import com.hz.zxk.superhttp_kotlin.listener.SuperCallback
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import okhttp3.Cache
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -20,12 +21,16 @@ import java.util.concurrent.TimeUnit
 class RetrofitRequest private constructor() : ISuperRequest {
 
     private var cacheSize = 10 * 1024 * 1024L
+    private val timeOut: Long = 15
 
     private var okHttpClient: OkHttpClient? = null
     private var retrofit: Retrofit? = null
     private var baseUrl: String? = null
     private var context: Context? = null
     private var isDebug: Boolean = false
+    private var openCache: Boolean = false
+    private var interceptor: Interceptor? = null
+    private var interceptors: MutableList<Interceptor>? = null
 
     companion object {
         val instance: RetrofitRequest by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
@@ -34,8 +39,20 @@ class RetrofitRequest private constructor() : ISuperRequest {
     }
 
     override fun init(context: Context, baseUrl: String) {
+        this.init(context) {
+            this.baseUrl = baseUrl
+        }
+    }
+
+    override fun init(context: Context, config: HttpConfig.() -> Unit) {
+        val httpConfig = HttpConfig()
+        config.invoke(httpConfig)
         this.context = context
-        this.baseUrl = baseUrl
+        this.baseUrl = httpConfig.baseUrl
+        this.isDebug = httpConfig.openDebug
+        this.openCache = httpConfig.openCache
+        this.interceptor = httpConfig.interceptor
+        this.interceptors = httpConfig.interceptors
         initClient()
         initRetrofit()
     }
@@ -46,11 +63,20 @@ class RetrofitRequest private constructor() : ISuperRequest {
 
 
     private fun initClient() {
-        okHttpClient = OkHttpClient.Builder()
-            .cache(getCache())
-            .addInterceptor(LoggerInterceptor(isDebug))
-            .connectTimeout(60, TimeUnit.SECONDS)
-            .build()
+        val builder = OkHttpClient.Builder()
+        if (openCache) {
+            builder.cache(getCache())
+        }
+        interceptor?.let {
+            builder.addInterceptor(it)
+        }
+        interceptors?.let { interceptors ->
+            interceptors.forEach {
+                builder.addInterceptor(it)
+            }
+        }
+        builder.connectTimeout(timeOut, TimeUnit.SECONDS)
+        okHttpClient = builder.build()
     }
 
     private fun initRetrofit() {

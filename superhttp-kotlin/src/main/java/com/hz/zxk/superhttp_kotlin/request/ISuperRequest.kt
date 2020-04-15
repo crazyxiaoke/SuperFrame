@@ -1,10 +1,12 @@
 package com.hz.zxk.superhttp_kotlin.request
 
 import android.content.Context
+import com.hz.zxk.superhttp_kotlin.config.HttpConfig
 import com.hz.zxk.superhttp_kotlin.listener.SuperCallback
 
 interface ISuperRequest {
     fun init(context: Context, baseUrl: String)
+    fun init(context: Context, config: HttpConfig.() -> Unit)
     fun openDebug(isDebug: Boolean = true)
 
     fun <T> get(
@@ -35,7 +37,7 @@ interface ISuperRequest {
         listener: SuperCallback<T>?
     )
 
-    fun <T,D> put(
+    fun <T, D> put(
         url: String,
         param: T?,
         tag: String?,
