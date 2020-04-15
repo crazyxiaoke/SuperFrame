@@ -7,7 +7,6 @@ import com.hz.zxk.superhttp_kotlin.listener.SuperCallback
 interface ISuperRequest {
     fun init(context: Context, baseUrl: String)
     fun init(context: Context, config: HttpConfig.() -> Unit)
-    fun openDebug(isDebug: Boolean = true)
 
     fun <T> get(
         url: String,
@@ -23,11 +22,11 @@ interface ISuperRequest {
         listener: SuperCallback<T>?
     )
 
-    fun <T, D> post(
+    fun <T> post(
         url: String,
-        param: T?,
+        param: Any?,
         tag: String?,
-        listener: SuperCallback<D>?
+        listener: SuperCallback<T>?
     )
 
     fun <T> delete(
@@ -37,10 +36,10 @@ interface ISuperRequest {
         listener: SuperCallback<T>?
     )
 
-    fun <T, D> put(
+    fun <T> put(
         url: String,
-        param: T?,
+        param: Any?,
         tag: String?,
-        listener: SuperCallback<D>?
+        listener: SuperCallback<T>?
     )
 }

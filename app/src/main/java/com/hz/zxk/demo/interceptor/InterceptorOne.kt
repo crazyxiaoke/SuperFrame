@@ -11,6 +11,11 @@ import okhttp3.Response
 class InterceptorOne : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         Log.d("TAG", "我是第一个拦截器")
-        return chain.proceed(chain.request())
+        val request = chain.request()
+        val newrequest = request.newBuilder()
+            .addHeader("token", "aiffeoalfjdlaf")
+            .addHeader("from","android")
+            .build()
+        return chain.proceed(newrequest)
     }
 }

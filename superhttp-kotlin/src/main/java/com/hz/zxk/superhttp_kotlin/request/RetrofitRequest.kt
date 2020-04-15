@@ -5,6 +5,7 @@ import com.hz.zxk.superhttp_kotlin.api.ApiService
 import com.hz.zxk.superhttp_kotlin.base.BaseDisposableObserver
 import com.hz.zxk.superhttp_kotlin.config.HttpConfig
 import com.hz.zxk.superhttp_kotlin.converter.MyGsonFactory
+import com.hz.zxk.superhttp_kotlin.interceptor.LoggerInterceptor
 import com.hz.zxk.superhttp_kotlin.listener.SuperCallback
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -57,10 +58,6 @@ class RetrofitRequest private constructor() : ISuperRequest {
         initRetrofit()
     }
 
-    override fun openDebug(isDebug: Boolean) {
-        this.isDebug = isDebug
-    }
-
 
     private fun initClient() {
         val builder = OkHttpClient.Builder()
@@ -75,6 +72,7 @@ class RetrofitRequest private constructor() : ISuperRequest {
                 builder.addInterceptor(it)
             }
         }
+        builder.addInterceptor(LoggerInterceptor(isDebug))
         builder.connectTimeout(timeOut, TimeUnit.SECONDS)
         okHttpClient = builder.build()
     }
@@ -132,7 +130,7 @@ class RetrofitRequest private constructor() : ISuperRequest {
 
     }
 
-    override fun <T, D> post(url: String, param: T?, tag: String?, listener: SuperCallback<D>?) {
+    override fun <T> post(url: String, param: Any?, tag: String?, listener: SuperCallback<T>?) {
         val type: Type? = listener?.mType
         retrofit?.create(ApiService::class.java)
             ?.post(url, param)
@@ -155,11 +153,11 @@ class RetrofitRequest private constructor() : ISuperRequest {
             ?.subscribe(getObserver(tag, type, listener))
     }
 
-    override fun <T, D> put(
+    override fun <T> put(
         url: String,
-        param: T?,
+        param: Any?,
         tag: String?,
-        listener: SuperCallback<D>?
+        listener: SuperCallback<T>?
     ) {
         val type: Type? = listener?.mType
         retrofit?.create(ApiService::class.java)

@@ -9,11 +9,14 @@ import com.hz.zxk.demo.R
 import com.hz.zxk.demo.databinding.ActivityMainBinding
 import com.hz.zxk.demo.ui.main.model.Result
 import com.hz.zxk.demo.ui.main.viewmodel.MainViewModel
+import com.hz.zxk.superframe_kotlin.base.BaseResultModel
 import com.hz.zxk.superframe_kotlin.base.BaseViewModelActivity
+import com.hz.zxk.superframe_kotlin.base.Statue
 import com.hz.zxk.superframe_kotlin.utils.SharedPreferenceUtil
 import com.hz.zxk.superhttp_kotlin.SuperHttp
 import com.hz.zxk.superhttp_kotlin.listener.SuperCallback
 import kotlinx.android.synthetic.main.activity_main.*
+import org.json.JSONObject
 
 @Route(path = "main/main")
 class MainActivity : BaseViewModelActivity<MainViewModel>() {
@@ -41,6 +44,7 @@ class MainActivity : BaseViewModelActivity<MainViewModel>() {
         })
         SuperHttp.instance.method(SuperHttp.Method.POST)
             .url("app_user/2/training/find_page_info")
+            .addBody(BaseResultModel(Statue.HIDE_LOADING,1,"测试"))
             .request("traningMainInfo", object : SuperCallback<Result>() {
                 override fun onStart() {
                 }

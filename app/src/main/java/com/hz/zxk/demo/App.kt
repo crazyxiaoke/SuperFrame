@@ -45,10 +45,10 @@ class App : Application() {
         interceptors.add(InterceptorThree())
         SuperHttp.instance.init(this) {
             this.baseUrl = "http://47.99.131.67:9092/"
+            this.openDebug = true
             this.interceptor = com.hz.zxk.demo.interceptor.LoggerInterceptor()
             this.interceptors = interceptors
         }
-        SuperHttp.instance.openDebug()
         ImageLoader.init(this)
     }
 }

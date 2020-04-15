@@ -20,9 +20,9 @@ interface ApiService {
     ): Observable<String>
 
     @POST("{url}")
-    fun  <T> post(
+    fun post(
         @Path(value = "url", encoded = true) url: String,
-        @Body params: @JvmSuppressWildcards T?
+        @Body params: @JvmSuppressWildcards Any?
     ): Observable<String>
 
     @DELETE("{url}")
@@ -32,9 +32,9 @@ interface ApiService {
     ): Observable<String>
 
     @PUT("{url}")
-    fun <T> put(
+    fun put(
         @Path(value = "url", encoded = true) url: String,
-        @Body params: @JvmSuppressWildcards T?
+        @Body params: @JvmSuppressWildcards Any?
     ): Observable<String>
 
 }

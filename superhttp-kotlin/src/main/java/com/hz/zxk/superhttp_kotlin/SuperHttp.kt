@@ -39,10 +39,6 @@ class SuperHttp private constructor() {
         this.request?.init(context, config)
     }
 
-    fun openDebug(isDebug: Boolean = true) {
-        this.request?.openDebug(isDebug)
-    }
-
     fun method(method: Method): SuperHttp {
         this.method = method
         return this
