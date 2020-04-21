@@ -1,11 +1,7 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
-
 apply plugin: 'com.aliyun.ams.emas-services'
 
 android {
@@ -41,6 +37,8 @@ kapt {
     }
 }
 
+
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -55,5 +53,7 @@ dependencies {
     api project(":superhttp-kotlin")
     implementation project(":superview-kotlin")
     kapt 'com.alibaba:arouter-compiler:1.2.2'
-    implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.9'
+//    implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.9'
+    implementation 'com.google.code.gson:gson:2.8.6'
 }
+

@@ -18,7 +18,7 @@ open class BaseResultModel(
             return BaseResultModel(Statue.LOADING_HAS_MSG, msg = msg)
         }
 
-        fun hiedeLoading(): BaseResultModel {
+        fun hideLoading(): BaseResultModel {
             return BaseResultModel(Statue.HIDE_LOADING, msg = "")
         }
 

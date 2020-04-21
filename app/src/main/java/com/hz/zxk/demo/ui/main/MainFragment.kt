@@ -1,18 +1,17 @@
 package com.hz.zxk.demo.ui.main
 
-import android.animation.ValueAnimator
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.hz.zxk.demo.R
-import com.hz.zxk.demo.ui.shop.ShopListActivity
 import com.hz.zxk.superframe_kotlin.base.BaseLazyFragment
-import com.hz.zxk.superframe_kotlin.imageloader.ImageLoader
-import com.hz.zxk.superframe_kotlin.router.RouterUtil
-import com.hz.zxk.superframe_kotlin.utils.StatusBarUtil
+import com.hz.zxk.superview_kotlin.recyclerview.horizontalPageRecycleView.HorizontalPageRecycleView
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.fragment_main.view.*
+import kotlinx.android.synthetic.main.item_function.view.*
 
 /**
 @author zhengxiaoke
@@ -33,32 +32,39 @@ class MainFragment : BaseLazyFragment() {
 
 
     override fun init(savedInstanceState: Bundle?) {
-        StatusBarUtil.transparent(activity!!)
-        val valueAnimator = ValueAnimator.ofInt(2012, 2019);
-        valueAnimator.addUpdateListener {
-            val v = it.animatedValue
-
-            text.text = v.toString()
+        val list: MutableList<Any> = ArrayList();
+        for (i in 0..10) {
+            list.add("Hi$i")
         }
-        valueAnimator.duration = 1000
-        valueAnimator.start()
+        val adapter = MyAdapter() as HorizontalPageRecycleView.Adapter<Any>
+        horizontal_viewpager.setRecyclerViewAdapter(adapter)
+        horizontal_viewpager.create(list)
 
-        btn.isEnabled = false
-        btn.setOnClickListener {
-            //            if (viewStub != null) {
-//                viewStub.inflate()
-//            }
-            Log.d("TAG", "btnOnclick")
+        button.setOnClickListener {
+            list.clear()
+            for (i in 11..21) {
+                list.add("Hell$i")
+            }
+            horizontal_viewpager.refresh(list)
         }
-
-        skip.setOnClickListener {
-            //            StartActivityUtil.pushActivity(context!!, ShopListActivity().javaClass)
-            val bundle = Bundle()
-            bundle.putString("name", "李四")
-//            ARouter.getInstance().build("/shop/shop").navigation()
-            RouterUtil.instance.pushActivity(context!!, ShopListActivity::class.java.name)
-        }
-
 
     }
+
+    inner class MyAdapter : HorizontalPageRecycleView.Adapter<String>() {
+        override fun onCreateView(parent: ViewGroup, itemType: Int): View {
+            return LayoutInflater.from(context).inflate(
+                R.layout.item_function,
+                parent,
+                false
+            )
+
+
+        }
+
+
+        override fun onBindView(view: View, position: Int, data: String) {
+            view.tv_function_name.text = data
+        }
+    }
+
 }

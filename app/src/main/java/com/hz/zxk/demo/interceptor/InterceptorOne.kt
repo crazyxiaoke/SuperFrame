@@ -10,12 +10,14 @@ import okhttp3.Response
  */
 class InterceptorOne : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
-        Log.d("TAG", "我是第一个拦截器")
-        val request = chain.request()
-        val newrequest = request.newBuilder()
-            .addHeader("token", "aiffeoalfjdlaf")
-            .addHeader("from","android")
-            .build()
-        return chain.proceed(newrequest)
+        val builder = chain.request().newBuilder()
+        builder.addHeader(
+            "app_token",
+            "GOG8C/ahU8qQk/tJNepunSjjKxgaKitSDqVPig1viTo9llDHslNIDUMTyohjXsTh3wZR56UZzpmVBwUBDoD6BLzYc9APSRdgWcURuZdfBABSdB8gOLTHXJrRMalMyH1YdUCyhzqJLlQjFopn6KqV1PPcLqNVswzk58W5lzc5vNI="
+        )
+        builder.addHeader("from", "android11")
+        builder.addHeader("version", "1.3.0")
+
+        return chain.proceed(builder.build())
     }
 }

@@ -121,4 +121,9 @@
         <attr name="tab_selected_textColor" format="color|reference" />
     </declare-styleable>
 
+    <declare-styleable name="HorizontalPageRecycleView">
+        <attr name="row" format="integer" />
+        <attr name="column" format="integer" />
+    </declare-styleable>
+
 </resources>

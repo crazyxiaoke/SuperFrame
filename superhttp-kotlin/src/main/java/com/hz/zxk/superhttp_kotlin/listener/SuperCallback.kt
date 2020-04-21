@@ -1,5 +1,6 @@
 package com.hz.zxk.superhttp_kotlin.listener
 
+import android.util.Log
 import java.lang.RuntimeException
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
@@ -11,7 +12,7 @@ abstract class SuperCallback<T> {
         mType = getSuperclassTypeParameter(javaClass)
     }
 
-    private fun getSuperclassTypeParameter(subClass: Class<*>): Type {
+    protected fun getSuperclassTypeParameter(subClass: Class<*>): Type {
         val superclass: Type? = subClass.genericSuperclass
         if (superclass != null && superclass is ParameterizedType) {
             return superclass.actualTypeArguments[0]

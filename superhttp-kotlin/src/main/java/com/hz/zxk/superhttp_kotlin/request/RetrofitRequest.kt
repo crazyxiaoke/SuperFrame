@@ -1,6 +1,7 @@
 package com.hz.zxk.superhttp_kotlin.request
 
 import android.content.Context
+import android.util.Log
 import com.hz.zxk.superhttp_kotlin.api.ApiService
 import com.hz.zxk.superhttp_kotlin.base.BaseDisposableObserver
 import com.hz.zxk.superhttp_kotlin.config.HttpConfig
@@ -182,6 +183,7 @@ class RetrofitRequest private constructor() : ISuperRequest {
             }
 
             override fun onFail(e: Throwable) {
+                Log.d("TAG", "onFail")
                 listener?.onError(e)
             }
         }

@@ -3,8 +3,10 @@ package com.hz.zxk.superhttp_kotlin.base
 import android.util.Log
 import com.google.gson.Gson
 import com.hz.zxk.superhttp_kotlin.manager.ObserverManager
+import io.reactivex.exceptions.Exceptions
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.plugins.RxJavaPlugins
+import java.lang.Exception
 import java.lang.reflect.Type
 
 
@@ -17,7 +19,6 @@ abstract class BaseDisposableObserver<T>(
     init {
         RxJavaPlugins.setErrorHandler {
             it.printStackTrace()
-            Log.d(TAG, "${it.message}")
         }
     }
 
@@ -32,10 +33,16 @@ abstract class BaseDisposableObserver<T>(
     }
 
     override fun onNext(result: String) {
-        if (type == null) {
-            onSuccess(null)
-        } else {
-            onSuccess(Gson().fromJson(result, type))
+        try {
+            if (type == null) {
+                onSuccess(null)
+            } else {
+                Log.d("TAG", "$type")
+                onSuccess(Gson().fromJson(result, type))
+            }
+        } catch (e: Exception) {
+            Exceptions.throwIfFatal(e)
+            onError(e)
         }
     }
 
@@ -43,6 +50,7 @@ abstract class BaseDisposableObserver<T>(
         e.printStackTrace()
         ObserverManager.instance.remove(tag)
         onFail(e)
+
     }
 
     abstract fun onLoading()
