@@ -4,13 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import com.hz.zxk.demo.R
 import com.hz.zxk.superframe_kotlin.base.BaseLazyFragment
-import com.hz.zxk.superview_kotlin.recyclerview.horizontalPageRecycleView.HorizontalPageRecycleView
+import com.hz.zxk.superview_kotlin.recyclerview.HorizontalPageRecycleView
 import kotlinx.android.synthetic.main.fragment_main.*
-import kotlinx.android.synthetic.main.fragment_main.view.*
 import kotlinx.android.synthetic.main.item_function.view.*
 
 /**
@@ -46,6 +43,10 @@ class MainFragment : BaseLazyFragment() {
                 list.add("Hell$i")
             }
             horizontal_viewpager.refresh(list)
+        }
+
+        add.setOnClickListener {
+            horizontal_viewpager.add("HH")
         }
 
     }

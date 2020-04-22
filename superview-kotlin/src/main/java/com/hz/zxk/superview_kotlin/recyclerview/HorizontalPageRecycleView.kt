@@ -1,4 +1,4 @@
-package com.hz.zxk.superview_kotlin.recyclerview.horizontalPageRecycleView
+package com.hz.zxk.superview_kotlin.recyclerview
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,8 +6,6 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import androidx.core.view.ViewCompat
-import androidx.core.view.get
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -76,6 +74,21 @@ class HorizontalPageRecycleView
         create(datas)
     }
 
+    fun add(datas: Any) {
+        val parentRecyclerView = viewPager2.getChildAt(0) as RecyclerView
+        parentRecyclerView.adapter?.let {
+            if (it.itemCount > 0) {
+                val viewHolder =
+                    parentRecyclerView.findViewHolderForAdapterPosition(it.itemCount - 1)
+                viewHolder?.let {
+                    val childRecyclerView = viewHolder.itemView as RecyclerView
+                    val adapter = childRecyclerView.adapter as HorizontalRecycleViewAdapter
+                    adapter.addData(datas)
+                }
+            }
+        }
+    }
+
     fun setRecyclerViewAdapter(adapter: Adapter<Any>) {
         this.recyclerAdapter = adapter;
     }
@@ -142,6 +155,7 @@ class HorizontalPageRecycleView
 
 
         override fun getItemCount(): Int {
+            Log.d("TAG", "size=${datas2.size}")
             return if (recyclerAdapter == null) 0 else datas2.size
         }
 

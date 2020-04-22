@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="radius" format="dimension" />
-    <attr name="topLeftRadius" format="dimension" />
-    <attr name="topRightRadius" format="dimension" />
-    <attr name="bottomRightRadius" format="dimension" />
-    <attr name="bottomLeftRadius" format="dimension" />
+    <attr name="round_radius" format="dimension" />
+    <attr name="round_topLeftRadius" format="dimension" />
+    <attr name="round_topRightRadius" format="dimension" />
+    <attr name="round_bottomRightRadius" format="dimension" />
+    <attr name="round_bottomLeftRadius" format="dimension" />
 
     <declare-styleable name="RefreshRecyclerView">
         <attr name="rf_empty_view" format="reference" />
@@ -95,21 +95,37 @@
         <attr name="st_selectStorkWidth" format="dimension" />
     </declare-styleable>
 
-    <declare-styleable name="RCAttrs">
-        <attr name="radius" />
-        <attr name="topLeftRadius" />
-        <attr name="topRightRadius" />
-        <attr name="bottomRightRadius" />
-        <attr name="bottomLeftRadius" />
+    <declare-styleable name="RoundAttrs">
+        <attr name="round_radius" />
+        <attr name="round_topLeftRadius" />
+        <attr name="round_topRightRadius" />
+        <attr name="round_bottomRightRadius" />
+        <attr name="round_bottomLeftRadius" />
     </declare-styleable>
 
     <!-- 可实现圆角的LinearLayout-->
     <declare-styleable name="RoundLinearLayout">
-        <attr name="radius" />
-        <attr name="topLeftRadius" />
-        <attr name="topRightRadius" />
-        <attr name="bottomRightRadius" />
-        <attr name="bottomLeftRadius" />
+        <attr name="round_radius" />
+        <attr name="round_topLeftRadius" />
+        <attr name="round_topRightRadius" />
+        <attr name="round_bottomRightRadius" />
+        <attr name="round_bottomLeftRadius" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundRelativeLayout">
+        <attr name="round_radius" />
+        <attr name="round_topLeftRadius" />
+        <attr name="round_topRightRadius" />
+        <attr name="round_bottomRightRadius" />
+        <attr name="round_bottomLeftRadius" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundFrameLayout">
+        <attr name="round_radius" />
+        <attr name="round_topLeftRadius" />
+        <attr name="round_topRightRadius" />
+        <attr name="round_bottomRightRadius" />
+        <attr name="round_bottomLeftRadius" />
     </declare-styleable>
 
     <declare-styleable name="TabButton">

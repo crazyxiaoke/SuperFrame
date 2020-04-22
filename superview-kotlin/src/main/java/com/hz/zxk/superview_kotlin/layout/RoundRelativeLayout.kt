@@ -4,22 +4,20 @@ import android.content.Context
 import android.graphics.Canvas
 import android.os.Build
 import android.util.AttributeSet
-import android.view.View
-import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import androidx.annotation.RequiresApi
 import com.hz.zxk.superview_kotlin.layout.helper.RoundLayoutHelper
 
 /**
 @author zhengxiaoke
-@date 2020/4/22 11:59 AM
+@date 2020/4/22 3:17 PM
  */
-class RoundLinearLayout @JvmOverloads constructor(
+class RoundRelativeLayout @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleId: Int = 0
-) : LinearLayout(context, attrs, defStyleId) {
-    private val helper: RoundLayoutHelper = RoundLayoutHelper(context, this, attrs)
-
+) : RelativeLayout(context, attrs, defStyleId) {
+    private val helper = RoundLayoutHelper(context, this, attrs)
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.hz.zxk.superview_kotlin.recyclerview.horizontalPageRecycleView.HorizontalPageRecycleView
+    <com.hz.zxk.superview_kotlin.recyclerview.HorizontalPageRecycleView
         android:id="@+id/horizontal_viewpager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,5 +27,14 @@
         android:layout_below="@id/horizontal_viewpager"
         android:layout_toRightOf="@id/button"
         android:text="添加" />
+
+    <com.hz.zxk.superview_kotlin.layout.RoundLinearLayout
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/add"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorPrimaryDark"
+        app:round_bottomLeftRadius="10dp" />
 
 </RelativeLayout>
